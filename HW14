@@ -1,0 +1,64 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    string input;
+    input = "1";
+    int num = 0;
+    vector<string> order = { "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th","18th", "19th", "20th" };
+    cout << "The first twenty numbers in the pattern:" << endl;
+    cout << setw(14) << "Order" << setw(14) << "Number" << endl;
+
+    for (int i = 0; i < 20; ++i) {
+        num = num + (i + 1) * (i + 1);
+        cout << setw(14) << order[i] << setw(14) << num << endl;
+    }
+
+    while (stoi(input) > 0) {
+        cout << endl << "What's the ordered element in the pattern that you wanted to find?" << endl;
+        cout << "(Or enter 0 to end) : ";
+        cin >> input;
+        
+
+        if (stoi(input) > 0) {
+            int element = stoi(input);
+            num = 0;
+
+            for (int i = 0; i < element; ++i) {
+                num = num + (i + 1) * (i + 1);
+            }
+
+            if (element < 21) {
+                cout << "The " << order[element - 1] << " element is:" << num << endl;
+            }
+            else if ((element % 10) == 1) {
+                cout << "The " << element << "st element is: " << num << endl;
+            }
+            else if ((element % 10) == 2) {
+                cout << "The " << element << "nd element is: " << num << endl;
+            }
+            else if ((element % 10) == 3) {
+                cout << "The " << element << "rd element is: " << num << endl;
+            }
+            else {
+                cout << "The " << element << "th element is: " << num << endl;
+            }
+        }
+        else if (stoi(input) == 0) {
+            cout << "Goodbye!" << endl;
+        }
+        else {
+            cout << "Please enter a valid number." << endl;
+            input = "1";
+        }
+    }
+
+    
+    cout << "Programmer: Yiwei Yin" << endl;
+}
+
